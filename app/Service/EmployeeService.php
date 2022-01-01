@@ -20,11 +20,11 @@ class EmployeeService
         }
         else{
             $user =new User;
+            $password=$request->input('name').Str::random(10);
+            $user->password=Crypt::encryptString(str_replace(' ','',$password));
         }
         $user->name=$request->input('name');
         $user->email=$request->input('email');
-        $password=$request->input('name').Str::random(10);
-        $user->password=Crypt::encryptString(str_replace(' ','',$password));
         $user->designation_id=$request->input('designation');
         $user->save();
 
